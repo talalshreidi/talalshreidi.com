@@ -14,7 +14,7 @@ My personal portfolio website I built using Flask and Tailwind CSS.
 - **Frontend**: HTML, CSS, JavaScript, Tailwind CSS
 - **Database**: SQLite
 
-## Live Demo
+## Live Link
 [View Live Site](your-deployment-url-here)
 
 ## Local Setup
