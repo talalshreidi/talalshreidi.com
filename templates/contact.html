@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<style>
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-600 { animation-delay: 0.6s; }
+
+.opacity-0 { opacity: 0; }
+
+.form-input {
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+}
+
+.contact-card {
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+</style>
+
+<section id="contact" class="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-7xl mx-auto w-full">
+        <!-- Header -->
+        <div class="text-center mb-16 opacity-0 animate-fadeInUp">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-purple-200">
+                Get In Touch
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Have a project in mind or just want to connect with me? Feel free to contact me via email or send a message using the form below.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Information -->
+            <div class="opacity-0 animate-slideInLeft animate-delay-200">
+                <div class="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8">
+                    <h3 class="text-2xl font-bold text-white mb-8">Let's Connect</h3>
+                    
+                    <!-- Contact Cards -->
+                    <div class="space-y-6">
+                        <div class="contact-card bg-white/5 rounded-xl p-6 border border-white/10">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center border border-blue-400/30">
+                                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-white">Email</h4>
+                                    <p class="text-gray-300">talal@talalshreidi.dev</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-card bg-white/5 rounded-xl p-6 border border-white/10">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center border border-purple-400/30">
+                                    <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-white">Location</h4>
+                                    <p class="text-gray-300">Connecticut, USA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="mt-8 pt-8 border-t border-white/10">
+                        <p class="text-gray-300 mb-4">Or find me on social media:</p>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/talal-shreidi-763616379/" target="_blank" rel="noopener noreferrer"
+                               class="flex items-center justify-center w-12 h-12 bg-blue-600/20 rounded-lg border border-blue-400/30 text-blue-400 hover:bg-blue-600/30 transition-all duration-300 hover:scale-110">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.25c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.25h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.354c.684-.632 1.582-1.354 2.5-1.354 2.206 0 4 1.794 4 4v6z"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/talalshreidi" target="_blank" rel="noopener noreferrer"
+                               class="flex items-center justify-center w-12 h-12 bg-gray-600/20 rounded-lg border border-gray-400/30 text-gray-400 hover:bg-gray-600/30 transition-all duration-300 hover:scale-110">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.804 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576 4.765-1.585 8.2-6.082 8.2-11.385 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="opacity-0 animate-scaleIn animate-delay-300">
+                <div class="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8">
+                    <h3 class="text-2xl font-bold text-white mb-8">Send a Message</h3>
+
+                    <form id="contactForm" method="POST" class="space-y-6">
+                        {{ form.hidden_tag() }}
+                        <!-- Name Input -->
+                        <div class="opacity-0 animate-fadeInUp animate-delay-400">
+                            {{ form.name.label(class="block text-sm font-medium text-gray-300 mb-2") }}
+                            {{ form.name(class="form-input w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent", placeholder="Enter your full name") }}
+                            {% if form.name.errors %}
+                                <div class="mt-1 text-red-400 text-sm">
+                                    {% for error in form.name.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="opacity-0 animate-fadeInUp animate-delay-500">
+                            {{ form.email.label(class="block text-sm font-medium text-gray-300 mb-2") }}
+                            {{ form.email(class="form-input w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent", placeholder="Enter your email address") }}
+                            {% if form.email.errors %}
+                                <div class="mt-1 text-red-400 text-sm">
+                                    {% for error in form.email.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Subject Input -->
+                        <div class="opacity-0 animate-fadeInUp animate-delay-600">
+                            {{ form.subject.label(class="block text-sm font-medium text-gray-300 mb-2") }}
+                            {{ form.subject(class="form-input w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent", placeholder="What's this about?") }}
+                            {% if form.subject.errors %}
+                                <div class="mt-1 text-red-400 text-sm">
+                                    {% for error in form.subject.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="opacity-0 animate-fadeInUp animate-delay-700">
+                            {{ form.message.label(class="block text-sm font-medium text-gray-300 mb-2") }}
+                            {{ form.message(class="form-input w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none", rows="6", placeholder="Tell me about your project or ask a question") }}
+                            {% if form.message.errors %}
+                                <div class="mt-1 text-red-400 text-sm">
+                                    {% for error in form.message.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="opacity-0 animate-fadeInUp animate-delay-800">
+                            <button type="submit"
+                                    class="submit-btn w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                                <span class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                    </svg>
+                                    Send Message
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Success/Error Messages -->
+                    <div id="formMessage" class="hidden mt-6 p-4 rounded-lg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Scroll restoration
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 0);
+});
+
+// Form handling
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const messageDiv = document.getElementById('formMessage');
+    const submitBtn = this.querySelector('button[type="submit"]');
+    
+    // Show loading state
+    submitBtn.innerHTML = `
+        <span class="flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+            Sending...
+        </span>
+    `;
+    submitBtn.disabled = true;
+    
+    // Send form data to backend
+    fetch('/contact', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Show success message
+            messageDiv.className = 'mt-6 p-4 rounded-lg bg-green-600/20 border border-green-400/30 text-green-300';
+            messageDiv.textContent = data.message;
+            messageDiv.classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+        } else {
+            // Show error message
+            messageDiv.className = 'mt-6 p-4 rounded-lg bg-red-600/20 border border-red-400/30 text-red-300';
+            messageDiv.textContent = data.message;
+            messageDiv.classList.remove('hidden');
+        }
+        
+        // Reset button
+        submitBtn.innerHTML = `
+            <span class="flex items-center justify-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+                Send Message
+            </span>
+        `;
+        submitBtn.disabled = false;
+        
+        
+        setTimeout(() => {
+            messageDiv.classList.add('hidden');
+        }, 5000);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        messageDiv.className = 'mt-6 p-4 rounded-lg bg-red-600/20 border border-red-400/30 text-red-300';
+        messageDiv.textContent = 'Network error. Please try again.';
+        messageDiv.classList.remove('hidden');
+        
+        // Reset button
+        submitBtn.innerHTML = `
+            <span class="flex items-center justify-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+                Send Message
+            </span>
+        `;
+        submitBtn.disabled = false;
+    });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}My Portfolio{% endblock %}</title>
+  <link href="{{ url_for('static', filename='dist/output.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-indigo-950 to-purple-950 min-h-screen text-gray-50 flex flex-col">    
+  <canvas id="star-canvas" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
+  
+  <header class="bg-white/30 backdrop-blur-md shadow-none dark:bg-gray-900/30 sticky top-0 z-50">
+    <nav class="w-full flex items-center justify-between py-3 px-4 sm:py-4 sm:px-6 lg:py-4 lg:px-4">
+      <!-- Social buttons always visible on the left -->
+      <div class="flex items-center space-x-4 sm:space-x-4">
+        <a href="https://www.linkedin.com/in/talal-shreidi-763616379/" target="_blank" rel="noopener noreferrer"
+           class="flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 lg:h-10 lg:w-10 rounded-lg bg-gradient-to-tr from-blue-600 via-blue-500 to-indigo-500 shadow-md border border-white/30 ring-1 ring-blue-300/30 transition duration-300 hover:scale-110 hover:rotate-6"
+           aria-label="LinkedIn">
+        <svg class="h-6 w-6 sm:h-8 sm:w-8 lg:h-6 lg:w-6 transition duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.25c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.25h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.354c.684-.632 1.582-1.354 2.5-1.354 2.206 0 4 1.794 4 4v6z"/></svg>
+        </a>
+        <a href="https://github.com/talalshreidi" target="_blank" rel="noopener noreferrer"
+           class="flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 lg:h-10 lg:w-10 rounded-lg bg-gradient-to-tr from-gray-800 via-gray-700 to-gray-600 shadow-md border border-white/30 ring-1 ring-gray-500/30 transition duration-300 hover:scale-110 hover:rotate-6"
+           aria-label="GitHub">
+        <svg class=" h-6 w-6 sm:h-8 sm:w-8 lg:h-6 lg:w-6 transition duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.804 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576 4.765-1.585 8.2-6.082 8.2-11.385 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+      </div>
+
+      <!-- Desktop menu -->
+      <div class="hidden lg:flex items-center space-x-7">
+        <ul class="flex items-center space-x-6 font-medium text-base">
+          <li>
+            <a href="/" class="text-gray-200 hover:text-blue-400 transition duration-300">Home</a>
+          </li>
+          <li>
+            <a href="/skills" class="text-gray-200 hover:text-blue-400 transition duration-300">Skills</a>
+          </li>
+          <li>
+            <a href="/projects" class="text-gray-200 hover:text-blue-400 transition duration-300">Projects</a>
+          </li>
+          <li>
+            <a href="/contact" class="text-gray-200 hover:text-blue-400 transition duration-300">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile burger button -->
+      <button id="navbar-burger" class="lg:hidden flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 text-gray-100 transition duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 rounded-lg">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 transition duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="navbar-menu"
+       class="lg:hidden absolute top-full left-0 w-full
+          bg-gradient-to-br from-gray-900/95 via-indigo-900/90 to-purple-900/95
+          backdrop-blur-xl shadow-2xl border-t border-white/20 z-40
+          transition-all duration-300 ease-in-out opacity-0 scale-y-90 pointer-events-none
+          origin-top transform">
+      <div class="px-4 py-6 sm:px-6 sm:py-8">
+        <ul class="flex flex-col space-y-4 sm:space-y-6 font-medium text-lg sm:text-xl">
+          <li>
+            <a href="/" class="block py-2 font-semibold text-white hover:text-blue-400 transition duration-300 hover:translate-x-2">Home</a>
+          </li>
+          <li>
+            <a href="/skills" class="block py-2 font-semibold text-white hover:text-blue-400 transition duration-300 hover:translate-x-2">Skills</a>
+          </li>
+          <li>
+            <a href="/projects" class="block py-2 font-semibold text-white hover:text-blue-400 transition duration-300 hover:translate-x-2">Projects</a>
+          </li>
+          <li>
+            <a href="/contact" class="block py-2 font-semibold text-white hover:text-blue-400 transition duration-300 hover:translate-x-2">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="bg-white/30 backdrop-blur-md shadow-none dark:bg-gray-900/30 mt-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+      <span class="text-sm sm:text-base text-gray-200 dark:text-gray-300">
+        &copy; {{ year }} <span class="font-semibold text-blue-200 dark:text-blue-300">Talal Shreidi</span>. All Rights Reserved.
+      </span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

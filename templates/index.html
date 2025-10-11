@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<style>
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fadeInRight {
+    animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-400 {
+    animation-delay: 0.4s;
+}
+
+.animate-delay-600 {
+    animation-delay: 0.6s;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+</style>
+
+<section class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col items-center sm:items-start justify-center min-h-[60vh] w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pb-16 sm:pb-24 lg:pb-32">
+        <h1 class="mb-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight w-full text-center sm:text-center md:text-center lg:text-left tracking-tight opacity-0 animate-fadeInUp break-words">Talal Shreidi</h1>
+        <div class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight w-full text-center sm:text-center md:text-center lg:text-left tracking-tight min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] lg:min-h-[3.5rem] xl:min-h-[4rem] opacity-0 animate-fadeInUp animate-delay-200 break-words" id="typewriter"></div>
+        <div class="flex flex-col lg:flex-row items-center lg:items-start mt-6 sm:mt-8 space-y-4 lg:space-y-0 lg:space-x-4 w-full opacity-0 animate-fadeInUp animate-delay-400">
+            <a href="#about" class="w-full lg:w-auto text-center px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 font-semibold text-base sm:text-lg transform hover:scale-105 hover:shadow-xl">
+                About Me
+            </a>
+            <a href="/projects" class="w-full lg:w-auto text-center px-6 py-3 sm:px-8 sm:py-4 border-2 border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300 font-semibold text-base sm:text-lg transform hover:scale-105">
+                View Projects
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section id="about" class="mt-32 pb-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="bg-white/5 backdrop-blur-xl rounded-3xl shadow-xl border border-white/10 p-8 lg:p-12 opacity-0 animate-scaleIn animate-delay-600">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <!-- Profile Image -->
+                <div class="flex-shrink-0 opacity-0 animate-fadeInLeft animate-delay-600">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Talal Shreidi"
+                            class="relative w-48 h-48 rounded-full border-2 border-white/20 shadow-xl object-cover transition-transform duration-300 hover:scale-105" />
+                        <div class="absolute -bottom-2 -right-2 bg-blue-600 text-white text-sm px-3 py-1 rounded-full shadow-lg font-medium">
+                            Developer
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div class="flex-1 text-center lg:text-left opacity-0 animate-fadeInRight animate-delay-600">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-purple-200">
+                        Who am I?
+                    </h2>
+                    
+                    <div class="space-y-6 text-lg text-gray-100 leading-relaxed">
+                        <p>
+                            Hi, I'm <span class="font-semibold text-blue-300">Talal Shreidi</span>, a Palestinian-American Software Developer 
+                            <img src="{{ url_for('static', filename='images/🇵🇸.png') }}" alt="Palestine Flag" class="inline w-6 h-6 ml-1" />
+                        </p>
+                        
+                        <p>
+                            Tech has been my passion since I started scripting games at 14. Now at 22, I've learned and utilized a vast array of programming languages and technologies through self-study, and formal education.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+                            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                                <h3 class="font-semibold text-blue-300 mb-2">Primary</h3>
+                                <p class="text-sm text-gray-300">Python</p>
+                            </div>
+                            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                                <h3 class="font-semibold text-purple-300 mb-2">Also</h3>
+                                <p class="text-sm text-gray-300">C++, ML, Data Analysis, Web Development</p>
+                            </div>
+                        </div>
+
+                        <p>
+                            For a full list of my skills and technologies used, check out the <a href="/skills" class="text-blue-400 hover:underline font-medium">Skills</a> page.
+                        </p>
+                        
+                        <p>
+                            When I'm not programming, you'll find me playing basketball and pickleball, spending time with family and friends, or exploring the latest tech trends.
+                        </p>
+                        
+                        <div class="mt-8 p-4 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl border border-white/10">
+                            <p class="italic text-blue-200 font-medium text-center">
+                                "It is hard to fail, but it is worse never to have tried to succeed." - Theodore Roosevelt
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

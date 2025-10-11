@@ -1,0 +1,11 @@
+.venv/
+instance/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.DS_Store
+*.db
+scraped_jobs.json
