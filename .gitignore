@@ -39,9 +39,8 @@ Thumbs.db
 geckodriver.log
 chromedriver.log
 
-# Build
+# Build 
 build/
-dist/
 *.egg-info/
 
 # Node.js
@@ -49,3 +48,6 @@ node_modules/
 package-lock.json
 yarn.lock
 .npm
+
+# Only ignore Python distribution files, not CSS dist folder
+*.dist-info/
