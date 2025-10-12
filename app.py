@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, send_from_directory
 from datetime import datetime
 from projects import PROJECTS
 import smtplib
@@ -19,6 +19,9 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "fallback-development-key")
+
+app.static_url_path = '/static'
+app.static_folder = 'static'
 
 app.register_blueprint(scraper_bp, url_prefix="/job-scraper-demo")
 
@@ -128,6 +131,10 @@ def contact():
     
     # GET request or form validation failed
     return render_template("contact.html", form=form)
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(app.static_folder, filename)
 
 @app.errorhandler(404)
 def not_found_error(error):
