@@ -13,7 +13,7 @@ COPY requirements.txt ./
 
 # Install Node and Python dependencies
 RUN npm install
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the rest of the project
 COPY . .
