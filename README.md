@@ -16,7 +16,7 @@ My personal portfolio website I built using Flask and Tailwind CSS.
 
 ## Live Link
 
-talalshreidi.com
+[Live Link](https://talalshreidi.com/)
 
 ## Local Setup
 ```bash
