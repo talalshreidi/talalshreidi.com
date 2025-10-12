@@ -15,7 +15,8 @@ My personal portfolio website I built using Flask and Tailwind CSS.
 - **Database**: SQLite
 
 ## Live Link
-[View Live Site](talalshreidi.com)
+
+talalshreidi.com
 
 ## Local Setup
 ```bash
