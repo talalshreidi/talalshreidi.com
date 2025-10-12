@@ -21,8 +21,8 @@ COPY . .
 # Build Tailwind assets
 RUN npm run build
 
-# Expose the port your app runs on (Flask usually uses 5000)
+# Expose the port your app runs on 
 EXPOSE 5000
 
 # Run your Python web app (adjust the command if your entry file differs)
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "wsgi:app"]
